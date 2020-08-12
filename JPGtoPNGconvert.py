@@ -2,7 +2,7 @@ import sys
 import os
 from PIL import Image
 
-# Grab first and second argument
+# Grab first and second argument folders to work on
 old_dir = sys.argv[1]
 new_dir = sys.argv[2]
 
