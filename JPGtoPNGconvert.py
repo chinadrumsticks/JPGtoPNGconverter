@@ -3,6 +3,7 @@ import os
 from PIL import Image
 
 # Grab first and second argument folders to work on
+# We expect the CLI arguments to be in the format <dir>/
 image_dir = sys.argv[1]
 output_dir = sys.argv[2]
 
