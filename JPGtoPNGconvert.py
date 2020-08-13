@@ -3,23 +3,20 @@ import os
 from PIL import Image
 
 # Grab first and second argument folders to work on
-old_dir = sys.argv[1]
-new_dir = sys.argv[2]
+image_dir = sys.argv[1]
+output_dir = sys.argv[2]
 
 # Check if new_dir folder exists, if not create it
-if not os.path.exists('New'):
-    os.makedirs('New')
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 # Loop through the Pokedex folder and convert jpg images to png
-target_fmt = '.png'
 
-for file in os.listdir(old_dir):
-    filename, extension = os.path.splitext(file)
-    try:
-        jpg_img = Image.open(f'./{old_dir}/{filename}{extension}')
-        png_name = filename + target_fmt
+for filename in os.listdir(image_dir):
+    img = Image.open(f'{image_dir}{filename}')
+    clean_name = os.path.splitext(filename)[0]
 
-        # Save the converted images to the new folder
-        jpg_img.save(f'./{new_dir}/{png_name}')
-    except OSError as err:
-        raise err
+    # Save the converted images to the new folder
+    img.save(f'{output_dir}{clean_name}.png', 'png')
+    print(f'{filename} saved to {output_dir} as PNG')
+ 
